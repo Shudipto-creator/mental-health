@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  cursor: none;
+}
+
+a, button, input, select, textarea {
+  cursor: none;
+}
+
+a:hover, button:hover {
+  cursor: none;
+}
+
+::selection {
+  background-color: rgba(139, 92, 246, 0.2);
+}
+
+.cursor-none {
+  cursor: none;
+}
