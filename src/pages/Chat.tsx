@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../hooks/useAuth';
 import { format } from 'date-fns';
-import { generateAIResponse } from '../lib/openai';
+import { generateAIResponse } from '../lib/groq';
 
 interface Message {
   id: string;
@@ -148,15 +148,32 @@ const Chat = () => {
 
       if (userMessageError) throw userMessageError;
 
-      setMessages(prev => [...prev, userMessageData]);
+      const updatedMessages = [...messages, userMessageData];
+      setMessages(updatedMessages);
 
       let aiResponse;
       try {
-        aiResponse = await generateAIResponse(userMessage, sessionId);
+        aiResponse = await generateAIResponse(
+          userMessage, 
+          sessionId,
+          updatedMessages.map(msg => ({
+            role: msg.role,
+            content: msg.content,
+            created_at: msg.created_at
+          }))
+        );
       } catch (error) {
         if (retryCount < 2) {
           setRetryCount(count => count + 1);
-          aiResponse = await generateAIResponse(userMessage, sessionId);
+          aiResponse = await generateAIResponse(
+            userMessage, 
+            sessionId,
+            updatedMessages.map(msg => ({
+              role: msg.role,
+              content: msg.content,
+              created_at: msg.created_at
+            }))
+          );
         } else {
           throw error;
         }
@@ -174,7 +191,7 @@ const Chat = () => {
 
       if (aiMessageError) throw aiMessageError;
 
-      setMessages(prev => [...prev, aiMessageData]);
+      setMessages([...updatedMessages, aiMessageData]);
       setRetryCount(0);
       inputRef.current?.focus();
     } catch (error: any) {

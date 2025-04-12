@@ -13,7 +13,7 @@ A modern, interactive mental health support platform built with React and Supaba
 
 ### 💬 AI-Powered Chat Support
 - Real-time chat with AI mental health assistant
-- Emotion-aware responses
+- Emotion-aware responses powered by Groq's Llama3 model
 - Message history persistence
 - Emoji support for expressive communication
 
@@ -43,7 +43,7 @@ A modern, interactive mental health support platform built with React and Supaba
 - **3D Graphics**: Three.js with React Three Fiber
 - **Animations**: Framer Motion
 - **Database**: Supabase
-- **AI Integration**: OpenAI GPT-3.5
+- **AI Integration**: Groq API with Llama3
 - **Icons**: Lucide React
 - **Build Tool**: Vite
 
@@ -54,7 +54,7 @@ A modern, interactive mental health support platform built with React and Supaba
 - Node.js 18+
 - npm or yarn
 - Supabase account
-- OpenAI API key
+- Groq API key
 
 ### Environment Setup
 
@@ -63,7 +63,7 @@ Create a `.env` file in the root directory:
 ```env
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_OPENAI_API_KEY=your_openai_api_key
+VITE_GROQ_API_KEY=your_groq_api_key
 ```
 
 ### Installation
@@ -123,6 +123,7 @@ yunnan-mental-health/
 - Message persistence
 - Typing indicators
 - Emoji picker integration
+- AI-powered responses using Groq's Llama3 model
 
 ### Profile Management
 - User data CRUD operations
@@ -146,5 +147,5 @@ yunnan-mental-health/
 ## Acknowledgments
 
 - Three.js for 3D graphics capabilities
-- OpenAI for AI chat functionality
+- Groq for AI chat functionality
 - Supabase for backend services
