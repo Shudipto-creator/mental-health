@@ -1,0 +1,107 @@
+/* Custom styles for form elements */
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+  accent-color: #a855f7;
+}
+
+input[type="checkbox"]:focus {
+  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline-offset: 1px;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: #a855f7;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: #a855f7;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3);
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3);
+}
+
+/* Select dropdown styling */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  width: 100%;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+select option {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+/* Textarea styling */
+textarea {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: white;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5);
+  border-color: rgba(168, 85, 247, 0.5);
+}

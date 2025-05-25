@@ -1,0 +1,94 @@
+/* Animation keyframes for loading dots */
+@keyframes bounce {
+  0%, 80%, 100% { 
+    transform: scale(0); 
+    opacity: 0.5; 
+  }
+  40% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+/* Animation keyframes for progress bar */
+@keyframes progressPulse {
+  0% { 
+    width: 15%; 
+    opacity: 1; 
+  }
+  50% { 
+    width: 70%; 
+    opacity: 0.8; 
+  }
+  100% { 
+    width: 15%; 
+    opacity: 1; 
+  }
+}
+
+/* Loading dots with different delays */
+.loading-dot {
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dot-1 {
+  animation-delay: 0s;
+}
+
+.loading-dot-2 {
+  animation-delay: 0.16s;
+}
+
+.loading-dot-3 {
+  animation-delay: 0.32s;
+}
+
+/* Progress bar animation */
+.loading-progress-bar {
+  width: 70%;
+  animation: progressPulse 2s infinite;
+}
+
+/* Additional animations for brain icon */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.brain-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Shimmer effect for text */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.2) 25%, 
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.2) 75%,
+    rgba(255,255,255,0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
