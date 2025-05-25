@@ -9,7 +9,6 @@ const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  const [studentId, setStudentId] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -40,7 +39,6 @@ const Auth = () => {
               {
                 user_id: data.user.id,
                 full_name: fullName,
-                student_id: studentId,
                 language_preference: 'en'
               }
             ], {
@@ -113,21 +111,7 @@ const Auth = () => {
                     />
                   </motion.div>
                   
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                    <label className="block text-sm font-medium text-gray-200">Student ID</label>
-                    <input
-                      type="text"
-                      value={studentId}
-                      onChange={(e) => setStudentId(e.target.value)}
-                      className="mt-1 block w-full px-3 py-2 bg-white/10 border border-gray-600 rounded-md shadow-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                      required={!isLogin}
-                    />
-                  </motion.div>
+
                 </>
               )}
             </AnimatePresence>

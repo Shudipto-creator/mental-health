@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, School, Globe, Save, Loader } from 'lucide-react';
+import { User, Mail, Globe, Save, Loader } from 'lucide-react';
 import Sidebar from '../components/Sidebar';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../hooks/useAuth';
@@ -12,7 +12,6 @@ const Profile = () => {
   const [error, setError] = useState<string | null>(null);
   const [profile, setProfile] = useState({
     full_name: '',
-    student_id: '',
     language_preference: 'en'
   });
 
@@ -32,7 +31,6 @@ const Profile = () => {
         if (data) {
           setProfile({
             full_name: data.full_name || '',
-            student_id: data.student_id || '',
             language_preference: data.language_preference || 'en'
           });
         }
@@ -60,7 +58,6 @@ const Profile = () => {
         .upsert({
           user_id: user.id,
           full_name: profile.full_name.trim(),
-          student_id: profile.student_id.trim(),
           language_preference: profile.language_preference
         });
 
@@ -174,19 +171,7 @@ const Profile = () => {
                   />
                 </div>
 
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-1">
-                    <School size={16} />
-                    Student ID
-                  </label>
-                  <input
-                    type="text"
-                    name="student_id"
-                    value={profile.student_id}
-                    onChange={handleChange}
-                    className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  />
-                </div>
+
 
                 <div>
                   <label className="flex items-center gap-2 text-sm font-medium text-gray-300 mb-1">

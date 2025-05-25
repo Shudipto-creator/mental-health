@@ -32,11 +32,12 @@ A modern, interactive mental health support platform built with React and Supaba
 - Contextual suggestions based on assessment results
 
 ### 👤 User Management
-- Secure authentication system
-- Customizable user profiles
+- Streamlined authentication with email and password
+- Simplified user registration process with minimal required fields
+- Customizable user profiles with name and preferences
 - Language preference settings (English/中文)
-- Student ID integration
-- Health data privacy controls
+- Health data privacy controls with secure data handling
+- Persistent user sessions with Supabase authentication
 
 ### 📚 Resource Center
 - Searchable mental health resources
@@ -111,14 +112,38 @@ npm run dev
 
 The platform uses Supabase for data storage. The following tables are required:
 
-- `profiles`: User profile information and preferences
-- `chat_sessions`: Chat session management and metadata
-- `chat_messages`: Message storage with AI response tracking
-- `health_assessments`: Master table for assessment tracking
-- `physical_health`: Physical health assessment data
-- `nutritional_health`: Nutritional assessment data
-- `sleep_health`: Sleep pattern assessment data
-- `stress_health`: Stress level assessment data
+#### User Management Tables
+- `profiles`: Stores user profile information including:
+  - `user_id`: Foreign key to Supabase auth.users
+  - `full_name`: User's full name
+  - `language_preference`: User's preferred language (en/zh)
+  - `created_at`: Timestamp of profile creation
+  - `updated_at`: Timestamp of last profile update
+
+#### Chat System Tables
+- `chat_sessions`: Manages chat conversations with:
+  - `id`: Unique session identifier
+  - `user_id`: Foreign key to user profile
+  - `created_at`: Session start timestamp
+  - `title`: Auto-generated or user-defined session title
+- `chat_messages`: Stores individual messages with:
+  - `id`: Unique message identifier
+  - `session_id`: Foreign key to chat_sessions
+  - `content`: Message text content
+  - `role`: Message sender (user/assistant)
+  - `created_at`: Message timestamp
+
+#### Health Assessment Tables
+- `health_assessments`: Master table tracking all assessments with:
+  - `id`: Unique assessment identifier
+  - `user_id`: Foreign key to user profile
+  - `created_at`: Assessment timestamp
+  - `status`: Completion status (in_progress/completed)
+
+- `physical_health`: Physical assessment data including chronic conditions and pain areas
+- `nutritional_health`: Nutritional assessment data including dietary habits and restrictions
+- `sleep_health`: Sleep pattern assessment data including sleep quality metrics
+- `stress_health`: Stress assessment data including stressors and coping mechanisms
 
 Migration files are provided in the `supabase/migrations` directory. Run these migrations to set up your database schema correctly.
 
@@ -201,16 +226,40 @@ mental-health/
 ## Recent Updates
 
 ### May 2025
-- Enhanced checkbox functionality across all health assessment forms
-- Optimized Resources page with filtering, search, and tag navigation
-- Improved UI/UX with consistent styling and better accessibility
-- Added comprehensive README documentation
+- **User Experience Improvements**:
+  - Removed Student ID field from signup and profile settings for streamlined user experience
+  - Enhanced checkbox functionality across all health assessment forms with improved visibility and multiple selection
+  - Fixed race conditions in checkbox state management for more reliable form interactions
+
+- **Resources Page Enhancements**:
+  - Implemented dynamic filtering system by category (Articles, Videos, Books, External Resources)
+  - Added search functionality for finding specific resources
+  - Created tag-based navigation with clickable tags for related content discovery
+  - Improved resource cards with external link indicators and tag displays
+  - Added empty state handling with clear user feedback
+  - Implemented responsive grid layout for all device sizes
+
+- **UI/UX Refinements**:
+  - Improved form accessibility with consistent styling and better contrast
+  - Enhanced visual feedback for interactive elements
+  - Added comprehensive README documentation with detailed feature descriptions
+  - Optimized animations for smoother transitions
 
 ### April 2025
-- Implemented full health assessment system with four specialized forms
-- Added assessment summary with visualization of results
-- Integrated AI chat with health context awareness
-- Launched initial version of Resources page
+- **Health Assessment System**:
+  - Implemented full health assessment system with four specialized forms:
+    - Physical Health Assessment for tracking physical wellbeing
+    - Nutritional Assessment for monitoring dietary habits
+    - Sleep Assessment for evaluating sleep patterns
+    - Stress Assessment for identifying stressors and coping mechanisms
+  - Added assessment summary with visualization of results
+  - Created persistent storage of assessment data with Supabase
+
+- **Core Features**:
+  - Integrated AI chat with health context awareness using Groq's Llama3 model
+  - Launched initial version of Resources page with basic information
+  - Implemented 3D visualization with Three.js and React Three Fiber
+  - Created responsive UI with Tailwind CSS and Framer Motion
 
 ## Acknowledgments
 
